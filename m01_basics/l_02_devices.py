@@ -22,7 +22,7 @@ for index in range(1,10):
     device["vendor"] = choice(["cisco", "juniper", "arista"])
     
     if device["vendor"] == "cisco":
-        device["os"] = "nexus"
+        device["os"] = choice(["ios", "iosxe", "iosxr", "nexus"])
         device["version"] = choice(["18.09", "19.09", "20.09"])
     elif device["vendor"] == "juniper":
         device["os"] = "junos"
