@@ -1,5 +1,5 @@
 from tabulate import tabulate
-from util import create_devices
+from util.create_utils import create_devices
 
 # ------- MAIN PROGRAM --------------------
 if __name__ == "__main__":
