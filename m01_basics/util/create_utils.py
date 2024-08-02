@@ -30,7 +30,7 @@ def create_devices(num_subnets = 1, num_devices = 1):
                 device["os"] = "eos"
                 device["version"] = choice(["4.24.1F", "4.23.2F", "4.22.1F", "4.21.3F"])
             
-            device["ip"] = "10.0" + str(subnet_index) + "." + str(device_index)
+            device["ip"] = "10.0." + str(subnet_index) + "." + str(device_index)
 
             create_devices.append(device)
 
