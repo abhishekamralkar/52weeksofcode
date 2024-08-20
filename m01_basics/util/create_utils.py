@@ -35,4 +35,35 @@ def create_devices(num_subnets = 1, num_devices = 1):
             create_devices.append(device)
 
     return create_devices
-    
+
+
+def create_network(num_devices=1, num_subnets=1):
+
+    devices = create_devices(num_devices, num_subnets)
+
+    network = dict()
+    network["subnets"] = dict()
+
+    for device in devices:
+
+        subnet_address_bytes = device["ip"].split(".")
+        subnet_address_bytes[3] = "0"
+        subnet_address = ".".join(subnet_address_bytes)
+
+        if subnet_address not in network["subnets"]:
+            network["subnets"][subnet_address] = dict()
+            network["subnets"][subnet_address]["devices"] = list()
+
+        network["subnets"][subnet_address]["devices"].append(device)
+
+        interfaces = list()
+        for index in range(0, choice([2, 4, 8])):
+            interface = {
+                "name": "/g/0/0" + str(index),
+                "speed": choice(["10", "100", "1000"])
+            }
+
+            interfaces.append(interface)
+
+        device["interfaces"] = interfaces
+    return network
